@@ -34,6 +34,8 @@ struct SwiftUIView: View {
                         .offset(x:10, y: 110)
                 }
             }
+            .offset(y: -30)
+            .padding()
             Spacer()
             VStack{
                 Button("Entrar"){
@@ -44,7 +46,7 @@ struct SwiftUIView: View {
                     Button("Vamos lá", role: .cancel){}
                 }
                 message: {
-                    Text("Voce irá comecar o desafio agora!")
+                    Text("Voce irá iniciar o desafio agora!")
                 }
             }
     }
