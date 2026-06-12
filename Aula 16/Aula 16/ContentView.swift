@@ -61,7 +61,6 @@ struct ContentView: View {
                              .padding()
                 Button("Escutar Texto") {
                     Task {
-                        
                         let textoExtraido = await detectText(photo: imageToAnalise)
                         
                         guard !textoExtraido.isEmpty else {
@@ -74,6 +73,26 @@ struct ContentView: View {
                         enunciado.rate = 0.4
                         
                         sintetizador.speak(enunciado)
+                    }
+                }
+                .font(.headline)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color(.indigo))
+                .foregroundColor(.white)
+                .cornerRadius(25)
+                .padding(.horizontal)
+                Button("Analisar Texto"){
+                    Task{
+                        let textoExtraido = await detectText(photo: imageToAnalise)
+                        
+                        guard !textoExtraido.isEmpty else {
+                            print("Nenhum texto encontrado para falar.")
+                            return
+                        }
+                        ScrollView{
+                            Text("\(textoExtraido)")
+                        }
                     }
                 }
                 .font(.headline)
